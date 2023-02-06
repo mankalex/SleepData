@@ -6,6 +6,8 @@ Console.WriteLine("Enter anything else to quit.");
 // input response
 string? resp = Console.ReadLine();
 
+string file = "sleepData.txt";
+
 if (resp == "1")
 {
     // create data file
@@ -24,7 +26,7 @@ if (resp == "1")
     Random rnd = new Random();
 
      // create file
-    StreamWriter sw = new StreamWriter("data.txt");
+    StreamWriter sw = new StreamWriter(file);
 
     // loop for the desired # of weeks
     while (dataDate < dataEndDate)
@@ -46,6 +48,24 @@ if (resp == "1")
 }
 else if (resp == "2")
 {
-    // TODO: parse data file
+    if(File.Exists(file))
+    {
+        //read data from file
+        StreamReader sr = new StreamReader(file);
+        while(!sr.EndOfStream)
+        {
+            
+            string line = sr.ReadLine();
+            //converts string to array
+            string[] arr = line.Split(',');
+            //creates datetime for week
+            DateTime week = DateTime.Parse(arr[0]);
+            //prints week
+            Console.WriteLine("Week of {0:MMM}, {0:dd}, {0:yyyy}", week);
+            
+        }
+        sr.Close();
+    }
+    
 
 }
