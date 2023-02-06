@@ -60,9 +60,19 @@ else if (resp == "2")
             string[] arr = line.Split(',');
             //creates datetime for week
             DateTime week = DateTime.Parse(arr[0]);
-            //prints week
+            //prints week from week daytime
             Console.WriteLine("Week of {0:MMM}, {0:dd}, {0:yyyy}", week);
+            //prints weekdays
+            Console.WriteLine("Su Mo Tu We Th Fr Sa");
+            //prints separator for weekdays and hours of sleep
+            Console.WriteLine("-- -- -- -- -- -- --");
             
+            string hours = arr[1];
+            //converts string to array
+            string[] arr2 = hours.Split('|');
+            //prints hours of sleep
+            Console.WriteLine("{0}  {1}  {2}  {3}  {4}  {5}  {6}", arr2);
+            Console.WriteLine("\n");
         }
         sr.Close();
     }
